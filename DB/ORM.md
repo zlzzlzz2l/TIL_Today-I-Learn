@@ -23,3 +23,10 @@ NODE.JS를 이용할 때 Query문을 바탕으로 만들어야 되는 줄 알았
 **단점**
 
 - ORM만으로 서비스를 구현하기 어렵다.
+
+### SELECT
+
+```
+select * FROM user;
+const 변수명 = await user.findAll({});
+```
