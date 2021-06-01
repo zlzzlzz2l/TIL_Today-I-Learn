@@ -69,3 +69,29 @@ SELECT <열 목록>
 	ON <조인될 조건>
 [WHERE 검색조건];
 ```
+
+---
+
+# UNION/UNION ALL
+
+`UNION`은 두 쿼리의 결과를 행으로 합치는 연산자이다.
+
+`UNION ALL`은 중복된 열까지 출력한다.
+
+```sql
+SELECT 문장1
+	UNION [ALL]
+SELECT 문장2
+```
+
+EX)
+
+```sql
+SELECT name, age FROM User
+	UNION
+SELECT bookname, price FROM Book
+
+-- User 테이블의 name, age행과 Book 테이블의 bookname, price를 하나의 행으로 만든다.
+```
+
+위 예시와 같이 열의 개수가 같아야 하고 데이터 형식도 같아야 한다.
