@@ -180,3 +180,67 @@ SELECT userId, SUM(amount) FROM Buytb GROUP BY userId;
 
   -- userId와 amount의 합계를 출력하는데, userId로 그룹핑한다. 그리고 SUM(amount)의 값이 1000 이상인 결과만 보고싶다.
   ```
+
+---
+
+# INSERT
+
+값을 삽입하는 명령
+
+```sql
+INSERT [INTO] 테이블이름[(열1, 열2, ...)] VALUES (값1, 값2, ...);
+```
+
+---
+
+### AUTO_INCREMENT
+
+: 자동으로 1부터 증가하는 값을 입력하는 키워드
+
+: 반드시 `PRIMARY KEY(기본키)` 또는 `UNIQUE(유일한 값)`으로 설정해야 한다.
+
+: 데이터 형식이 숫자인 열에서만 사용 가능하다.
+
+- 증가 값을 N으로 바꾸고 싶을 때
+
+  ```sql
+  -- 서버 변수인 @@auto_increment_increment 변수를 변경해야 한다.
+
+  SET @@auto_increment_increment=N;
+  ```
+
+- 조건부 데이터 삽입 및 수정
+
+  `INSERT IGNORE`을 이용하면 기본키가 중복되더라도 무시하고 넘어가며 오류 메시지만 출력한다.
+
+  `ON DUPLICATE KEY UPDATE`는 기본키가 중복되지 않으면 일반 INSERT문처럼 동작하고, 기본키가 중복되면 UPDATE문을 실행한다.
+
+---
+
+# UPDATE
+
+값을 수정하는 명령
+
+```sql
+UPDATE 테이블이름
+SET 열1 = 값1, 열2 = 값2, ...
+WHERE 조건
+```
+
+---
+
+# DELETE
+
+데이터를 행 단위로 삭제하는 명령
+
+```sql
+DELETE FROM 테이블이름 WHERE 조건;
+```
+
+DELETE 명령어는 트랜잭션 로그를 기록하는 작업을 하기 때문에 삭제하는 데 시간이 오래 걸린다.
+
+DROP문은 테이블 자체를 삭제하고 트랜잭션 로그를 기록하지 않는다.
+
+TRUNCATE문은 DELETE와 결과가 동일하지만 트랜잭션 로그를 기록하지 않아서 속도가 빠르다.
+
+따라서 대용량 테이블 전체 내용을 삭제할 때는 `DROP`문을 사용하고, 테이블의 구조를 남겨놓고 싶은 경우에는 `TRUNCATE`문으로 삭제하는 것이 효율적이다.
