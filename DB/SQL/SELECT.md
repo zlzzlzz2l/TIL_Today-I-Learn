@@ -134,3 +134,23 @@ SELECT DISTINCT address FROM User WHERE age = 20;
 -- 나이가 20인 사람의 주소를 출력한다.
 -- 예를 들어 주소가 경기인 사람이 수백명이 될 수도 있으니, 그 결과를 경기라는 데이터 하나로 축소한다.
 ```
+
+---
+
+### LIMIT 절
+
+출력되는 행의 개수를 제한하고 싶을 때 쓰인다.
+
+```sql
+SELECT age FROM User ORDER BY name LIMIT 5;
+
+-- 이름 순으로 나이를 출력하는데, 5개의 행만 결과로 보여준다.
+```
+
+시작점(OFFSET)과 개수(LIMIT)으로 표현할 수 있다.
+
+```sql
+SELECT age FROM User ORDER BY name LIMIT 0, 5;
+
+SELECT age FROM User ORDER BY name LIMIT 5 OFFSET 0;
+```
