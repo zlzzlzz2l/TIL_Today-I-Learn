@@ -95,3 +95,25 @@ SELECT bookname, price FROM Book
 ```
 
 위 예시와 같이 열의 개수가 같아야 하고 데이터 형식도 같아야 한다.
+
+---
+
+# NOT IN/IN
+
+`NOT IN`은 첫 번째 쿼리의 결과 중에서 두 번째 쿼리에 해당하는 것을 제외하고 출력하는 연산자이다.
+
+`IN`은 첫 번째 쿼리의 결과 중에서 두 번째 쿼리에 해당되는 것만 조회하는 연산자이다.
+
+```sql
+SELECT name, age FROM User
+	WHERE age NOT IN (SELECT age FROM User WHERE age > 20);
+
+-- 20세 이하인 사용자 이름과 나이를 출력한다.
+```
+
+```sql
+SELECT name, age FROM User
+	WHERE age IN (SELECT age FROM User WHERE age > 20);
+
+-- 20세 이상인 사용자 이름과 나이를 출력한다.
+```
