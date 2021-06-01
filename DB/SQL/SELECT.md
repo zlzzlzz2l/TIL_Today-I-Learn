@@ -32,3 +32,43 @@ SELECT 열이름1, 열이름2 FROM 테이블이름 WHERE 열이름1 = 'ahyun';
 **조건 연산자와 관계 연산자**
 
 `AND`와 `OR` 그리고 `>`, `<`, `=`를 이용해서 조건문에 활용하여 데이터를 출력할 수 있다.
+
+**BETWEEN ... AND, IN(), LIKE 연산자**
+
+해당 범위 내의 데이터를 출력하고 싶을 때, 조건 연산자와 관계 연산자를 이용한다.
+
+```sql
+SELECT name, nickname FROM User WHERE age >= 10 AND age <= 20;
+-- age가 10세 이상부터 20세 이하인 데이터를 출력
+```
+
+위 SQL 문을 BETWEEN AND 연산자를 이용할 수도 있다.
+
+```sql
+SELECT name, nickname FROM User WHERE age BETWEEN 10 AND 20;
+-- age가 10세 이상부터 20세 이하인 데이터를 출력
+```
+
+- 서브쿼리와 ANY, ALL, SOME 연산자
+
+  서브쿼리 : 쿼리문 안에 또 쿼리문이 들어있는 것
+
+  **ANY** : 여러 결과 중 한 가지만 만족해도 출력 (SOME이랑 같음)
+
+  **ALL** : 서브쿼리의 여러 결과를 모두 만족해야 출력
+
+  ```sql
+  SELECT age FROM User
+  	WHERE age >= ANY (SELECT age FROM User WHERE name = '김%');
+
+  -- 성이 김씨인 사람보다 크거나 같은 나이 출력
+
+  SELECT age FROM User
+  	WHERE age >= ALL (SELECT age FROM User WHERE name = '김%');
+
+  -- 성이 김씨인 사람보다 크거나 같은 나이 출력
+  ```
+
+  WHERE 문에 `=`을 붙이면 서브 쿼리 결과와 같은 값만을 출력한다.
+
+  `= ANY(서브쿼리)`는 `IN (서브쿼리)`와 동일하다.
