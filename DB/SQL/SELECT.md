@@ -121,3 +121,16 @@ SELECT age FROM User ORDER BY name ASC address DESC;
 `ORDER BY`는 `WHERE`절과 같이 사용해도 되고, 꼭 맨 뒤에 와야 한다.
 
 또한, 꼭 필요할 때만 사용하는 것을 추천한다.
+
+---
+
+### DISTINCT
+
+중복되지 않은 결과로 출력하고 싶을 때 쓰인다.
+
+```sql
+SELECT DISTINCT address FROM User WHERE age = 20;
+
+-- 나이가 20인 사람의 주소를 출력한다.
+-- 예를 들어 주소가 경기인 사람이 수백명이 될 수도 있으니, 그 결과를 경기라는 데이터 하나로 축소한다.
+```
