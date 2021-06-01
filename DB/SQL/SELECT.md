@@ -154,3 +154,29 @@ SELECT age FROM User ORDER BY name LIMIT 0, 5;
 
 SELECT age FROM User ORDER BY name LIMIT 5 OFFSET 0;
 ```
+
+---
+
+### GROUP BY
+
+그룹으로 묶는(grouping) 역할
+
+집계 함수(aggregate function)와 함께 같이 쓰인다.
+
+```sql
+SELECT userId, SUM(amount) FROM Buytb GROUP BY userId;
+
+-- userId와 amount의 합계를 출력하는데, userId로 그룹핑한다.
+```
+
+집계함수의 종류로는 `AVG(): 평균구하기`, `MIN(): 최솟값 구하기`, `MAX(): 최댓값 구하기`, `COUNT(): 행의 개수 세기`, `COUNT(DISTINCT): 행의 개수 세기(중복은 1개만 인정)`, `STDEV(): 표준편차 구하기`, `VAR_SAMP(): 분산 구하기` 가 있다.
+
+- HAVING 절
+
+  그룹핑 되어있는 결과에 조건을 더해 결과를 출력하고 싶을 때 쓰인다.
+
+  ```sql
+  SELECT userId, SUM(amount) FROM Buytb GROUP BY userId HAVING SUM(amount) > 1000;
+
+  -- userId와 amount의 합계를 출력하는데, userId로 그룹핑한다. 그리고 SUM(amount)의 값이 1000 이상인 결과만 보고싶다.
+  ```
