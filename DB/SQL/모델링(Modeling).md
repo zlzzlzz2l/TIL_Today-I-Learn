@@ -116,3 +116,133 @@
   1. 응답시간을 최소화해야 한다.
   2. 얼마나 많은 트랜잭션을 동시에 발생시킬 수 있는지 검토해야 한다.
   3. 데이터가 저장될 공간을 효율적으로 배치해야 한다.
+
+---
+
+## ER 모델
+
+세상의 사물을 개체(Entity)와 개체 간의 관계(Relationship)로 표현한다.
+
+`개체`: 독립적인 의미를 지니고 있는 유무형의 사람 또는 사물이며 개체의 특성을 나타내는 속성(Attribute)에 의해 식별된다. 또한, 개체끼리 서로 관계를 가진다.
+
+데이터베이스에서 주로 다루는 개체는 낱개로 구성된 것, 낱개가 각각 데이터 값을 가지는 것, 데이터 값이 변하는 것 등이 있다.
+
+비슷한 속성의 개체 타입(Entity type)을 구성하며, 개체 집합(Entity set)으로 묶인다.
+
+`ER 다이어그램`: ER 모델은 개체와 개체 간의 관계를 표준화된 그림으로 나타낸다.
+
+### 개체와 개체 타입
+
+ER 다이어그램상에서 개체 타입은 직사각형으로 나타낸다.
+
+- 개체 타입의 유형
+
+  1. 강한 개체(Strong Entity): 다른 개체의 도움 없이 독자적으로 존재할 수 있는 개체
+
+     강한 개체 타입은 아래와 같이 ER 다이어그램으로 표현한다. (보통 개체 타입이라고 하면 강한 개체 타입이다.)
+
+     ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bdd58744-544d-489d-8e54-ef46102bfc27/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bdd58744-544d-489d-8e54-ef46102bfc27/Untitled.png)
+
+  2. 약한 개체(Weak Entity): 독자적으로 존재할 수 없고 반드시 상위 개체 타입을 가진다.
+
+     약한 개체 타입은 아래와 같이 ER 다이어그램으로 표현한다.
+
+     ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/30f1e5b5-5020-4c40-8c2b-0c3b72d1245f/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/30f1e5b5-5020-4c40-8c2b-0c3b72d1245f/Untitled.png)
+
+### 속성
+
+개체가 가진 성질을 말한다.
+
+속성은 기본적으로 타원으로 표현하고, 개체 타입을 나타내는 직사각형과 실선으로 연결된다.
+
+속성의 이름은 타원의 중앙에 표기하고, **속성이 개체를 유일하게 식별할 수 있는 키**일 경우 속성 이름에 **밑줄을 긋는다**.
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0a297159-a328-4d17-9763-f4d330ef20be/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0a297159-a328-4d17-9763-f4d330ef20be/Untitled.png)
+
+- 속성의 유형
+
+  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4882c509-4a0e-4342-8de9-113701b91ad3/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4882c509-4a0e-4342-8de9-113701b91ad3/Untitled.png)
+
+### 관계와 관계 타입
+
+관계(Relationship): 개체 사이의 연관성을 나타내는 개념
+
+관계 타입(Relationship type): 개체 타입과 개체 타입 간의 연결 가능한 관계를 정의한 것이며, 관계 집합(Relation set)은 관계로 연결된 집합을 의미한다.
+
+관계 타입은 아래와 같이 ER 다이어그램으로 표현된다.
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7e78f1f2-4a50-4106-8d41-014077df068c/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7e78f1f2-4a50-4106-8d41-014077df068c/Untitled.png)
+
+- 관계 타입의 유형
+
+  - 차수에 따른 유형
+
+    관계 집합에 참가하는 개체 타입의 수를 관계 타입의 차수(Degree)라고 한다.
+
+    1. 1진 관계(Recursive Relationship): 한 개의 개체가 자기 자신과 관계를 맺는 경우
+    2. 2진 관계(Binary Relationship): 두 개의 개체가 관계를 맺는 경우
+    3. 3진 관계(Ternary Relationship): 세 개의 개체가 관계를 맺는 경우
+
+  - 관계 대응수(Cardinality): 두 개체 타입의 관계에 실제로 참여하는 개별 개체 수를 말한다.
+
+    1. 일대일(1:1) 관계: 좌측 개체 타입에 포함된 개체가 우측 개체 타입에 포함된 개체와 일대일로 대응하는 관계를 말한다.
+    2. 일대다(1:N), 다대일(N:1) 관계: 실제 일상생활에서 가장 많이 볼 수 있는 관계로, 한쪽 개체 타입의 개체 하나가 다른 쪽 개체 타입의 여러 개체와 관계를 맺는 것을 말한다.
+    3. 다대다(N:M): 각 개체 타입의 개체들이 서로 임의의 개수를 개체들과 서로 복합적인 관계를 맺고 있는 관계를 의미한다.
+
+    관계 대응수 1:1, 1:N, M:N에서 1, N, M은 각 개체가 관계에 참여하는 최댓값을 의미한다.
+
+    최솟값, 최댓값을 관계 실선 위에 (최솟값, 최댓값)으로 표기한다.
+
+    - 관계 대응수에 따른 관계 타입의 유형
+
+      ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fb472b37-e2d0-490a-b1aa-73a4deb7cbb8/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fb472b37-e2d0-490a-b1aa-73a4deb7cbb8/Untitled.png)
+
+- ISA 관계
+
+  상위 개체 타입의 특성에 따라 하위 개체 타입이 결정되는 형태이다.
+
+  개체 간 상하관계 표기를 위해서 아래와 같이 ER 다이어그램에서 표현된다.
+
+  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9af25e45-ce64-4084-8a2f-3ec8efa6f20c/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9af25e45-ce64-4084-8a2f-3ec8efa6f20c/Untitled.png)
+
+- 참여 제약 조건
+
+  개체 집합 내 모든 개체가 관계에 참여하는지 유무에 따라 전체 참여와 부분 참여로 구분이 가능하다.
+
+  전체 참여: 개체 집합의 모든 개체가 참여한다.
+
+  부분 참여: 일부만 참여한다.
+
+  전체 참여를 (최솟값, 최댓값)으로 표현할 경우 최솟값이 1이상으로 모두 참여한다는 뜻이고, 부분 참여는 최솟값이 0 이상이다.
+
+- 역할
+
+  개체 타입 간의 관계를 표현할 때 각 개체들은 고유한 역할을 담당한다.
+
+- 순환적 관계
+
+  하나의 개체 타입이 동일한 개체 타입(자기 자신)과 순환적으로 관계를 가지는 형태이다.
+
+### 약한 개체 타입과 식별자
+
+약한 개체 타입: 상위 개체 타입이 결정되지 않으면 개별 개체를 식별할 수 없는 종속된 개체 타입
+
+독립적인 키로는 존재할 수 없지만 상위 개체 타입의 키와 결합하여 역한 개체 타입의 개별 개체를 고유하게 식별하는 속성 식별자(Discriminator) 혹은 부분키(Partial key)라고 한다.
+
+- 식별자와 약한 개체 타입
+
+  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a1127ad4-83ec-4314-9f7f-05cf21e19291/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a1127ad4-83ec-4314-9f7f-05cf21e19291/Untitled.png)
+
+### IE 표기법
+
+ER 다이어그램을 더 축약하여 쉽게 표현하면 Erwin 등 소프트웨어에서 사용 가능하다.
+
+IE(Information Engineering) 표기법에서 개체 타입과 속성은 직사각형으로 표현한다.
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/109dfb9b-53c5-46dd-ac5f-682fddd99320/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/109dfb9b-53c5-46dd-ac5f-682fddd99320/Untitled.png)
+
+IE 표기법에서 관계는 실선 혹은 점선으로 표기한다.
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/570e92e4-35e6-4f54-ba73-a65a3f555630/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/570e92e4-35e6-4f54-ba73-a65a3f555630/Untitled.png)
+
+IE 표기법에서 관계(강한관계, 비식별자 관계)는 점섬으로 표기한다.
