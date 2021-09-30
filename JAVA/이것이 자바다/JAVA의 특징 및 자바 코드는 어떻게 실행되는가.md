@@ -134,10 +134,15 @@ Java Virtual Machine의 약자로, `자바를 실행시키는 가상의 기계`�
 ### 바이너리 코드와 바이트 코드의 차이점
 
 - 바이너리 코드란?
+
   : 컴퓨터가 이해할 수 있는 0과 1로 구성된 바이너리 코드
+
   : CPU가 이해할 수 있는 언어
+
 - 바이트 코드란?
+
   : 가상머신(JVM)이 이해할 수 있는 언어 즉, 가상머신이 이해할 수 있는 0과 1로 이루어진 코드
+
   : 바이트 코드는 실시간 번역기(JIT, Just In Time) 컴파일러에 의해 바이너리 코드로 변환된다.
 
 ---
@@ -161,13 +166,21 @@ Java Virtual Machine의 약자로, `자바를 실행시키는 가상의 기계`�
 ![image](https://user-images.githubusercontent.com/48669011/135392117-5196ff77-c5d6-4e72-b877-62d961fe5ae6.png)
 
 - Class Loader
+
   : 자바 컴파일러에 의해 바이트 코드로 변환된 클래스를 읽어드려 `Runtime Data Area`에 적재한다.
+
 - Execution Engine
+
   : `Class Loader`에 의해 `Runtime Data Area`에 적재된 클래스(바이트 코드)를 기계어로 변환하고 실행한다.
+
   : Interpreter 방식으로 하나씩 실행되기도 하고, JIT 컴파일러에 의해 실행되기도 한다.
+
 - Garbage Collector
+
   : Heap 영역에 생성되어 있는 객체들 중 참조되지 않는 객체를 찾아 제거하는 역할을 한다. 실행되는 시간은 정해져 있지 않다.
+
 - Runtime Data Area
+
   : JVM의 메모리 영역이다. 자바 애플리케이션을 실행할 때 사용되는 데이터들을 적재하는 영역이다.
 
 ---
