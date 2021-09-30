@@ -175,10 +175,15 @@ Java Virtual Machine의 약자로, `자바를 실행시키는 가상의 기계`�
 ## JDK와 JRE의 차이
 
 - JDK(Java Development Kit, 자바 개발 키트)
+
   : 프로그램 개발에 필요한 JVM, 라이브러리 API, 컴파일러 등의 개발도구가 포함되어 있다.
+
   : `JRE` + `개발에 필요한 도구`
+
 - JRE(Java Runtime Environment, 자바 실행 환경)
+
   : 프로그램 실행에 필요한 JVM, 라이브러리 API만 포함되어 있다.
+
   : `JVM` + `표준 클래스 라이브러리`
 
 프로그램을 개발하고자 한다면 JDK를 설치하고, 이미 개발된 프로그램을 실행한다면 JRE만 설치하면 된다.
