@@ -27,6 +27,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunManager">
@@ -53,6 +54,7 @@
       <updated>1639839499915</updated>
       <workItem from="1639839501034" duration="2132000" />
       <workItem from="1639842265178" duration="393000" />
+      <workItem from="1639842672305" duration="313000" />
     </task>
     <servers />
   </component>
